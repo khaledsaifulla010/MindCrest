@@ -12,7 +12,7 @@ const PostCard = ({post}) => {
             </CardDescription>
           </CardHeader> */}
           <CardContent>
-            <h1>Header</h1>
+            <h1>Header {post.id} </h1>
           </CardContent>
           
         </Card>
