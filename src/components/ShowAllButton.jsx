@@ -1,9 +1,11 @@
 import { Button } from "./ui/button";
 
-const ShowAllButton = ({ posts }) => {
+const ShowAllButton = ({ onToggle, showAll }) => {
   return (
     <div>
-      <Button variant="destructive">Show All Posts</Button>
+      <Button variant="destructive" onClick={onToggle}>
+        {showAll ? "Show Less" : "Show All"}
+      </Button>
     </div>
   );
 };
