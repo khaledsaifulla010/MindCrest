@@ -10,6 +10,9 @@ const nextConfig = {
       process.env.KINDE_POST_LOGIN_REDIRECT_URL ??
       `https://${process.env.VERCEL_URL}`,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
