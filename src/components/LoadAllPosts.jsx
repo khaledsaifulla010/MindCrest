@@ -31,7 +31,7 @@ const LoadAllPosts = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-4 gap-y-12 ml-6 mt-12">
+      <div className="grid grid-cols-4 gap-y-12 ml-12 mt-20">
         {visiblePosts.map((post) => (
           <PostCard key={post.id} post={post}></PostCard>
         ))}
