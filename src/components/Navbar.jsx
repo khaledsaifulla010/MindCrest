@@ -1,10 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import useUsers from "@/hooks/useUsers";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const Navbar = async () => {
-  const user = await useUsers();
+  let user = null;
+
+  try {
+    const { getUser } = getKindeServerSession();
+    user = await getUser();
+  } catch (error) {
+    console.error("Error fetching user:", error.message);
+  }
 
   return (
     <div className="bg-gray-200 w-full">
