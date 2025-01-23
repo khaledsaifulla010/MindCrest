@@ -1,23 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import { useEffect, useState } from "react";
+import useUsers from "@/hooks/useUsers";
 
-const Navbar = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    async function fetchUser() {
-      const { getUser } = (
-        await import("@kinde-oss/kinde-auth-nextjs/client")
-      ).getKindeClientSession();
-      const userData = await getUser();
-      setUser(userData);
-    }
-    fetchUser();
-  }, []);
+const Navbar = async () => {
+  const user = await useUsers();
 
   return (
     <div className="bg-gray-200 w-full">
@@ -29,6 +16,7 @@ const Navbar = () => {
         <div>
           <ul className="flex items-center gap-10 font-semibold text-base">
             <Link href={"/"}>Home</Link>
+
             {user ? (
               <>
                 <Link href={"/profile"}>Profile</Link>
