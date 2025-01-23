@@ -1,21 +1,14 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 
-const compat = new FlatCompat();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const eslintConfig = [
-  compat.extends("eslint:recommended"),
-  compat.extends("plugin:@next/next/core-web-vitals"),
-  {
-    // Custom configuration rules
-    files: ["*.js", "*.mjs", "*.ts", "*.tsx"],
-    parserOptions: {
-      ecmaVersion: 2020,
-      sourceType: "module",
-    },
-    rules: {
-      // Custom rules here
-    },
-  },
-];
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const eslintConfig = [...compat.extends("next/core-web-vitals")];
 
 export default eslintConfig;
