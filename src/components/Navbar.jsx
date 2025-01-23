@@ -7,8 +7,6 @@ const Navbar = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  console.log(user);
-
   return (
     <div className=" bg-gray-200 w-full">
       <div className=" flex items-center justify-between px-10 py-6">
