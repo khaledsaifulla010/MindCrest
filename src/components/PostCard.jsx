@@ -7,7 +7,7 @@ const PostCard = ({ post }) => {
     (post.title.split(" ").length > 4 ? "..." : "");
   return (
     <div>
-      <Link href={`/`}>
+      <Link href={`/blog/${post.id}`}>
         <Card className="w-[300px] h-[100px] border border-blue-100 transition-all duration-1000 hover:shadow-lg hover:scale-105">
           <CardHeader>
             <h1 className="text-2xl text-center font-bold">
