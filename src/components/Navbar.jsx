@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 const Navbar = async () => {
@@ -25,7 +25,12 @@ const Navbar = async () => {
           <ul className="flex items-center gap-10 font-semibold text-base">
             <Link href={"/"}>Home</Link>
             <Link href={"/profile"}>Profile</Link>
-            <LoginLink>Login</LoginLink>
+
+            {user ? (
+              <LogoutLink>Log out</LogoutLink>
+            ) : (
+              <LoginLink>Login</LoginLink>
+            )}
           </ul>
         </div>
       </div>
