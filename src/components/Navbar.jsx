@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
-const Navbar = () => {
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+const Navbar = async () => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  console.log(user);
+
   return (
     <div className=" bg-gray-200 w-full">
       <div className=" flex items-center justify-between px-10 py-6">
@@ -18,7 +25,7 @@ const Navbar = () => {
           <ul className="flex items-center gap-10 font-semibold text-base">
             <Link href={"/"}>Home</Link>
             <Link href={"/profile"}>Profile</Link>
-            <Link href={"/login"}>Login</Link>
+            <LoginLink>Login</LoginLink>
           </ul>
         </div>
       </div>
